@@ -6,7 +6,7 @@ provider "aws" {
 # ------------------------- KEY PAIR -------------------------
 resource "aws_key_pair" "key_pair" {
   key_name   = "MyKey"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2dlxKnmfweH+cDrw9qCr/YFR+I/RS/Vkain0vLlm4OAyeZpmZS0xKkmTvDSHQXKqakY5USTP2EfT0rBjWkFJj4YjlxGhp3mpoDk9kq84Vt1M74CgECDJl2qfXqK7pJ5iPuaq0wA/nAHv79HwJrdmMBxIq7W/Fq7CJLbXAVJT6lTOGlutS71Ruko50qnGVQMhSvhLGFlQATi8mSWetIEjRELrj46HoNfCs+ubo5yD/ICsXMN1eaxtLKkK9wRGBgz1OM2KyLLwLEw7fd4L+D1OutA2/4+6ak9VJqOGc5rCn1wr8QlosIWIGoEifSlsvUHPmi9WjpUMdks0gmHzumicLFtV7y/dmV1IhJeyRC02jtypZUk6sbdXY2tvSfFehykCgrBu5ByR0s85AMJH5Gr8xczrfH6nU0xYDiUAXER8enb4XPOk5ea4kZcaFdykf/sPgfB8FT+aCE59Y6H0gWmG8ehw98Cj2RLvl2xG+SDcGbF0JrMF8f8JJ5zBVq8wN6ZE= Dell@MADHU-KIRAN"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC6vt7dk2U4doMHeCxmdNGZp92WKSGzaRh555djv7Gv/ykWEQ60zOzEohs8+y0uHGVS2KsOoylSJPWfcbqTjsgH/eATIZ1S7RWJMphXrq5r4BWi6SJMiLXTOeZkyMyI2Ei76icA52ANjzGaJGp8z6k0ofZ+o/dky+85F5j8k5iCurj0rL6LTN+gEc0RVqwhvEgR57rZ8hM2Ni/Fj5mzubtxZ1SLZJr+Yw6KxiLcbuJ2lhQ6ytljcy8z4Y+VkP4LIYvHVwBV/fBoB4Cj9To4ak1Yw5T1txTXqc0HyBmkUV/bG460YKeflZlUHWPGDBvOzBY46UWedvT4MfdA3H4Q8bUnMnIDDmzqamkthrUixUcAjkMg4tnLIksYBKUYaolaOSuCNux1/qMpA1GhpDoX1kKhBIpmcf5a2jkWLIKLqQIVBwqsAshZmI5xCAxYaTBkxYKF7hxRiXkYpKpjgWvcsUZNthrSXlwv83Puf9MZESra5KblRdWzpWq2b0E/zv9K0Is= masam@anvesh"
 }
 
 # ------------------------- VPC -------------------------
