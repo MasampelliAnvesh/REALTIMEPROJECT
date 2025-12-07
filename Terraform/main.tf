@@ -137,7 +137,7 @@ resource "aws_security_group" "myapp_sg" {
 # ------------------------- JENKINS INSTANCE -------------------------
 resource "aws_instance" "jenkins" {
   ami                    = "ami-0fa3fe0fa7920f68e"
-  instance_type          = "t2.large"
+  instance_type          = "m7i-flex.large"
   subnet_id              = aws_subnet.public_subnet.id
   key_name               = aws_key_pair.key_pair.key_name
   vpc_security_group_ids = [aws_security_group.jenkins_sg.id]
@@ -172,7 +172,7 @@ resource "aws_instance" "jenkins" {
 # ------------------------- MyApp INSTANCE -------------------------
 resource "aws_instance" "myapp" {
   ami                    = "ami-0fa3fe0fa7920f68e"
-  instance_type          = "t2.micro"
+  instance_type          = "m7i-flex.large"
   subnet_id              = aws_subnet.public_subnet.id
   key_name               = aws_key_pair.key_pair.key_name
   vpc_security_group_ids = [aws_security_group.myapp_sg.id]
