@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 echo 'Checking out source code'
-                git branch: 'main', url: 'https://github.com/devopstraininghub/REALTIMEPROJECT.git'
+                git branch: 'main', url: 'https://github.com/MasampelliAnvesh/REALTIMEPROJECT.git'
             }
         }
 
@@ -17,40 +17,41 @@ pipeline {
             }
         }
 
-        stage('Sonar Scan') {
-            steps {
-                echo 'Running SonarQube scan'
-                sh '''
-                    cd Application
-                    mvn sonar:sonar \
-                      -Dsonar.host.url=http://44.203.120.255:9000 \
-                      -Dsonar.login=squ_857bc378b399cc95305af238a1c3f0e10e243415
-                '''
-            }
-        }
+        // stage('Sonar Scan') {
+        //     steps {
+        //         echo 'Running SonarQube scan'
+        //         sh '''
+        //             cd Application
+        //             mvn sonar:sonar \
+        //               -Dsonar.host.url=http://54.172.47.112:9000/ \
+        //               -Dsonar.login=squ_ac14684da1e9cd42d1ae76f1a8a923cb0a08275c
+
+        //         '''
+        //     }
+        // }
 
         stage('Build Docker Image') {
             steps {
                 script {
                     echo 'Building Docker Image'
-                    sh 'cd Application && docker build -t devopshubg333/k8s:${BUILD_NUMBER} .'
+                    sh 'cd Application && docker build -t anvesh7036/k8s:${BUILD_NUMBER} .'
                 }
             }
         }
 
-        stage('Docker Image Scan') {
-            steps {
-                sh 'trivy image devopshubg333/k8s:${BUILD_NUMBER}'
-            }
-        }
+        // stage('Docker Image Scan') {
+        //     steps {
+        //         sh 'trivy image anvesh7036/k8s:${BUILD_NUMBER}'
+        //     }
+        // }
 
         stage('Push Image to DockerHub') {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
-                        sh 'echo "${dockerhub}" | docker login -u devopshubg333 --password-stdin'
+                        sh 'echo "${dockerhub}" | docker login -u "anvesh7036" --password-stdin'
                     }
-                    sh 'docker push devopshubg333/k8s:${BUILD_NUMBER}'
+                    sh 'docker push anvesh7036/k8s:${BUILD_NUMBER}'
                 }
             }
         }
@@ -58,13 +59,13 @@ pipeline {
         stage('Update Kubernetes Deployment Manifest File') {
             environment {
                 GIT_REPO_NAME = "REALTIMEPROJECT"
-                GIT_USER_NAME = "devopstraininghub"
+                GIT_USER_NAME = "MasampelliAnvesh"
             }
             steps {
                 withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                     sh '''
-                        git config user.email "madhu@gmail.com"
-                        git config user.name "madhu"
+                        git config user.email "masampellianvesh@gmail.com"
+                        git config user.name "MasampelliAnvesh"
 
                         sed -i "s|k8s:.*|k8s:${BUILD_NUMBER}|g" Ansible/k8s_deployment.yaml
 
